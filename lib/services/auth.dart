@@ -38,9 +38,29 @@ class AuthService {
       return null;
     }
   }
+
   //sign in email pass
+  Future registerWithEmail(String email, String password) async {
+    try {
+      var result = await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      User user = result.user;
+      return _userfirebase(user);
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 
   //anon sign in
-
+  Future signInWithEmail(String email, String password) async {
+    try {
+      var result = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+      User user = result.user;
+      return _userfirebase(user);
+    } catch (e) {
+      print(e.toString());
+    }
+  }
   //sign out
 }
