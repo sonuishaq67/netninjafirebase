@@ -1,4 +1,5 @@
 import 'package:brewcrew/models/usernew.dart';
+import 'package:brewcrew/services/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -45,6 +46,8 @@ class AuthService {
       var result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       User user = result.user;
+      await DatabaseService(uid: user.uid)
+          .updateUserData('0', 'new member', 100);
       return _userfirebase(user);
     } catch (e) {
       print(e.toString());
