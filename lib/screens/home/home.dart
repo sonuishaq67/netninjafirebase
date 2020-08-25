@@ -1,4 +1,5 @@
 import 'package:brewcrew/models/brew.dart';
+import 'package:brewcrew/screens/home/settings_form.dart';
 import 'package:brewcrew/services/auth.dart';
 import 'package:brewcrew/services/database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -15,7 +16,7 @@ class Home extends StatelessWidget {
           context: context,
           builder: (context) => Container(
                 padding: EdgeInsets.symmetric(vertical: 20, horizontal: 60),
-                child: Text('sheeeeet'),
+                child: SettingsForm(),
               ));
     }
 
