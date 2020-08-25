@@ -69,7 +69,7 @@ class _SettingsFormState extends State<SettingsForm> {
                     value: _currSugars ?? userData.sugars,
                     items: sugars.map((sugar) {
                       return DropdownMenuItem(
-                          value: sugar, child: Text('sugar $sugar'));
+                          value: sugar, child: Text('$sugar sugar(s)'));
                     }).toList(),
                     onChanged: (val) => setState(() => _currSugars = val),
                   ),
@@ -92,6 +92,13 @@ class _SettingsFormState extends State<SettingsForm> {
                       style: TextStyle(color: Colors.white),
                     ),
                     onPressed: () async {
+                      if (_formKey.currentState.validate()) {
+                        await DatabaseService(uid: user.uid).updateUserData(
+                            _currSugars ?? userData.sugars,
+                            _currName ?? userData.name,
+                            _currStren ?? userData.strength);
+                      }
+                      Navigator.pop(context);
                       print(_currName);
                       print(_currSugars);
                       print(_currStren);

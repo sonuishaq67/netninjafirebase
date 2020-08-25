@@ -2,7 +2,6 @@ import 'package:brewcrew/models/brew.dart';
 import 'package:brewcrew/screens/home/settings_form.dart';
 import 'package:brewcrew/services/auth.dart';
 import 'package:brewcrew/services/database.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'brewlist.dart';
@@ -35,7 +34,7 @@ class Home extends StatelessWidget {
             FlatButton.icon(
                 onPressed: () => _showSettingsPanel(),
                 icon: Icon(Icons.settings),
-                label: Text('lmao'))
+                label: Text('settings'))
           ],
         ),
         body: BrewList(),
